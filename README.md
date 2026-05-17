@@ -1,4 +1,20 @@
 # dinesphere 🍽️ — Premium Restaurant Discovery & Reservation Engine
+🌐 Live Demo: https://dinesphere-eight.vercel.app
+
+📦 GitHub Repository: https://github.com/swayamawas/dinesphere
+## 📸 Screenshots
+
+### Home Page
+![Home](./screenshots/home.png)
+
+### Login / Signup
+![Auth](./screenshots/auth.png)
+
+### Booking Flow
+![Booking](./screenshots/booking.png)
+
+### Forgot Password + OTP
+![OTP](./screenshots/otp.png)
 
 dinesphere is a state-of-the-art, secure, relational-database-backed restaurant discovery and table reservation web application. Designed for the vibrant Indian dining market, dinesphere features a stunning obsidian-crimson glassmorphism UI, real-time location resolution, instant autocomplete suggestions, and a secured bookings controller backed by Prisma ORM and NextAuth.js.
 
