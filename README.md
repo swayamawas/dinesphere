@@ -1,12 +1,12 @@
 # dinesphere 🍽️ — Premium Restaurant Discovery & Reservation Engine
 
-TableBook is a state-of-the-art, secure, relational-database-backed restaurant discovery and table reservation web application. Designed for the vibrant Indian dining market, TableBook features a stunning obsidian-crimson glassmorphism UI, real-time location resolution, instant autocomplete suggestions, and a secured bookings controller backed by Prisma ORM and NextAuth.js.
+dinesphere is a state-of-the-art, secure, relational-database-backed restaurant discovery and table reservation web application. Designed for the vibrant Indian dining market, dinesphere features a stunning obsidian-crimson glassmorphism UI, real-time location resolution, instant autocomplete suggestions, and a secured bookings controller backed by Prisma ORM and NextAuth.js.
 
 ---
 
 ## 🌟 Modern Visual Aesthetics
 
-TableBook is built with a **rich dark-mode aesthetic system**:
+dinesphere is built with a **rich dark-mode aesthetic system**:
 *   **Color Palette**: Primary deep obsidian (`#0a0a0a`), balanced by a soft secondary graphite (`#121212`), with glowing accents of deep crimson gradient (`#f53d5a` to `#e12d4a`).
 *   **UI Features**: Premium glassmorphism panels, interactive glow states, smooth hover animations, custom animated loaders, and responsive scaling optimized for desktop and mobile viewports.
 
@@ -32,7 +32,7 @@ TableBook is built with a **rich dark-mode aesthetic system**:
 ### 🛡️ 4. Secured DB-Backed Booking Engine
 *   **Session-Backed Identities**: Secure bookings handled by **NextAuth.js**. Eliminates vulnerable client-side mock parameters by sourcing the user’s ID strictly from cryptographically signed server sessions.
 *   **Transaction Pipelines**: Database routes process secure `GET /api/bookings` logs, `POST /api/bookings` reservations, and `PATCH /api/bookings/[id]` cancellations directly.
-*   **Dashboard Sync**: Refactored dashboard [bookings/page.tsx](file:///c:/Users/swaya/.gemini/antigravity/scratch/tablebook/app/bookings/page.tsx) automatically reads, filters (Upcoming, Completed, Cancelled), and canceling reservation states.
+*   **Dashboard Sync**: Refactored dashboard [bookings/page.tsx](file:///c:/Users/swaya/.gemini/antigravity/scratch/dinesphere/app/bookings/page.tsx) automatically reads, filters (Upcoming, Completed, Cancelled), and canceling reservation states.
 
 ### 🔌 5. Resilient Dual-Mode Operation (Fail-Safe Trap)
 *   **Zero-Downtime Guarantee**: Wrapped all relational database calls in try-catch fallback traps. If your SQLite migrations are unapplied or your cloud database is offline, **the application gracefully switches to a mock data cache**, keeping the search grid 100% online with zero server crashes!
@@ -54,7 +54,7 @@ TableBook is built with a **rich dark-mode aesthetic system**:
 ## 📁 Core Directory Structure
 
 ```text
-tablebook/
+dinesphere/
 ├── prisma/                 # Database schema definitions and migration profiles
 │   ├── schema.prisma       # Type-safe Prisma models (User, Restaurant, Booking, etc.)
 │   └── seed.js             # Seeding file for 16+ premium Indian dining venues
@@ -76,7 +76,7 @@ tablebook/
 ### 1. Clone the Codebase
 ```bash
 git clone <your-repository-url>
-cd tablebook
+cd dinesphere
 ```
 
 ### 2. Install Project Dependencies
@@ -113,12 +113,12 @@ Open [http://localhost:3000](http://localhost:3000) in your web browser.
 
 ## 🚀 Cloud Staging & Production Deployment Roadmap
 
-To move TableBook to public production staging on platforms like **Vercel**, execute the following steps:
+To move dinesphere to public production staging on platforms like **Vercel**, execute the following steps:
 
 ### 1. Setup Cloud PostgreSQL (e.g. Supabase, Neon)
 Since serverless environments (Vercel) reset local SQLite files, swap the backend provider:
 1. Initialize a free PostgreSQL database instance on **Supabase** or **Neon**.
-2. Update [schema.prisma](file:///c:/Users/swaya/.gemini/antigravity/scratch/tablebook/prisma/schema.prisma):
+2. Update [schema.prisma](file:///c:/Users/swaya/.gemini/antigravity/scratch/dinesphere/prisma/schema.prisma):
    ```prisma
    datasource db {
      provider = "postgresql"
@@ -130,16 +130,13 @@ Since serverless environments (Vercel) reset local SQLite files, swap the backen
 In your Vercel Project Dashboard under Settings -> Environment Variables, configure:
 *   `DATABASE_URL`: Your PostgreSQL connection string.
 *   `NEXTAUTH_SECRET`: A secure random hash key.
-*   `NEXTAUTH_URL`: Your public domain (e.g. `https://tablebook.vercel.app`).
+*   `NEXTAUTH_URL`: Your public domain (e.g. `https://dinesphere.vercel.app`).
 
-### 3. Vercel Automated Build Automation
-Our repository includes a pre-configured [vercel.json](file:///c:/Users/swaya/.gemini/antigravity/scratch/tablebook/vercel.json) build command hook to sync schemas in serverless environments on every push:
-```json
-{
-  "buildCommand": "prisma generate && prisma db push && next build"
-}
+### Deployment
+DineSphere uses Vercel default Next.js build settings.
+Environment variables are configured in the Vercel dashboard.
 ```
 
 ---
 
-*TableBook Dev Manual — Fully updated as of May 17, 2026.*
+*DineSphere Dev Manual – Fully updated.*
