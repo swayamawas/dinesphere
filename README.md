@@ -1,4 +1,4 @@
-# TableBook 🍽️ — Premium Restaurant Discovery & Reservation Engine
+# dinesphere 🍽️ — Premium Restaurant Discovery & Reservation Engine
 
 TableBook is a state-of-the-art, secure, relational-database-backed restaurant discovery and table reservation web application. Designed for the vibrant Indian dining market, TableBook features a stunning obsidian-crimson glassmorphism UI, real-time location resolution, instant autocomplete suggestions, and a secured bookings controller backed by Prisma ORM and NextAuth.js.
 
