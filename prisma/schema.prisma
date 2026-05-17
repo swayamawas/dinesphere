@@ -1,0 +1,71 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id             String   @id @default(cuid())
+  name           String
+  email          String   @unique
+  hashedPassword String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  bookings       Booking[]
+}
+
+model PasswordResetOtp {
+  id        String   @id @default(cuid())
+  email     String
+  otp       String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Booking {
+  id                  String   @id @default(cuid())
+
+  userId              String
+  user                User @relation(fields: [userId], references: [id])
+
+  restaurantId        String
+  restaurantName      String
+  restaurantCuisine   String
+  restaurantImage     String
+
+  date                String
+  time                String
+  guests              String
+
+  discount            Int?
+  status              String @default("confirmed")
+
+  createdAt           DateTime @default(now())
+}
+
+model Restaurant {
+  id           String     @id @default(cuid())
+  name         String
+  cuisine      String
+  location     String
+  city         String
+  rating       Float
+  imageUrl     String
+  type         String     // "veg" | "non-veg" | "both"
+  mealOptions  String     // Comma-separated list (e.g. "Lunch,Dinner")
+  discounts    Discount[]
+  createdAt    DateTime   @default(now())
+}
+
+model Discount {
+  id           String     @id @default(cuid())
+  time         String     // e.g. "16:00"
+  percentage   Int
+  restaurantId String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+}
